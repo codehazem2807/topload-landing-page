@@ -37,7 +37,7 @@
       inset: 0;
       background: radial-gradient(circle at 30% 20%, #0d1b2a 0%, #03060c 75%);
       z-index: -3;
-      animation: bgShift 16s infinite alternate ease-in-out;
+      animation: bgShift 24s infinite alternate ease-in-out;
     }
 
     @keyframes bgShift {
@@ -51,7 +51,7 @@
       filter: blur(100px);
       z-index: -2;
       opacity: 0.5;
-      animation: orbFloat 20s infinite alternate ease-in-out;
+      animation: orbFloat 26s infinite alternate ease-in-out;
       pointer-events: none;
     }
 
@@ -61,7 +61,7 @@
       background: #0066ff;
       top: -150px;
       left: -100px;
-      animation-duration: 18s;
+      animation-duration: 22s;
     }
 
     .orb-2 {
@@ -70,13 +70,13 @@
       background: #00c3ff;
       bottom: -200px;
       right: -150px;
-      animation-duration: 24s;
+      animation-duration: 28s;
       opacity: 0.3;
     }
 
     @keyframes orbFloat {
       0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(60px, -40px) scale(1.2); }
+      100% { transform: translate(36px, -28px) scale(1.08); }
     }
 
     /* ---------- MAIN CARD (glassmorphism + glow) ---------- */
@@ -93,8 +93,8 @@
         0 30px 60px -15px rgba(0, 0, 0, 0.9),
         0 0 0 1px rgba(0, 200, 255, 0.15) inset,
         0 0 80px -20px rgba(0, 160, 255, 0.3);
-      transition: box-shadow 0.6s, transform 0.6s;
-      animation: cardReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: box-shadow 0.45s ease;
+      animation: cardReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
       position: relative;
       overflow: hidden;
     }
@@ -108,16 +108,9 @@
       pointer-events: none;
     }
 
-    .card:hover {
-      box-shadow: 
-        0 40px 80px -15px rgba(0, 0, 0, 0.95),
-        0 0 0 2px rgba(0, 190, 255, 0.3) inset,
-        0 0 120px -20px rgba(0, 170, 255, 0.5);
-    }
-
     @keyframes cardReveal {
-      0% { opacity: 0; transform: translateY(70px) scale(0.96); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+      from { transform: translateY(18px) scale(0.99); }
+      to { transform: translateY(0) scale(1); }
     }
 
     /* ---------- LOGO (with professional glow) ---------- */
@@ -134,18 +127,6 @@
       height: auto;
       filter: drop-shadow(0 0 25px rgba(0, 190, 255, 0.7));
       transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1), filter 0.4s;
-      animation: logoPulse 4s infinite ease-in-out;
-    }
-
-    .logo-wrapper img:hover {
-      transform: scale(1.07);
-      filter: drop-shadow(0 0 40px rgba(0, 220, 255, 1));
-    }
-
-    @keyframes logoPulse {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-      100% { transform: translateY(0px); }
     }
 
     /* ---------- HEADLINE (gradient shine) ---------- */
@@ -161,12 +142,26 @@
       color: transparent;
       margin-bottom: 0.25rem;
       filter: drop-shadow(0 0 30px rgba(0, 170, 255, 0.4));
-      animation: shine 6s infinite linear;
+      animation: shine 9s infinite linear;
     }
 
     @keyframes shine {
       0% { background-position: 0% center; }
       100% { background-position: 300% center; }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover {
+        box-shadow:
+          0 40px 80px -15px rgba(0, 0, 0, 0.95),
+          0 0 0 2px rgba(0, 190, 255, 0.3) inset,
+          0 0 120px -20px rgba(0, 170, 255, 0.5);
+      }
+
+      .logo-wrapper img:hover {
+        transform: scale(1.04);
+        filter: drop-shadow(0 0 32px rgba(0, 220, 255, 0.85));
+      }
     }
 
     /* ---------- SUBHEAD ---------- */
@@ -178,14 +173,18 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.3s forwards;
+      animation: fadeUp 0.55s 0.08s both;
       text-shadow: 0 0 20px rgba(0, 160, 255, 0.3);
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0.8; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes softReveal {
+      from { opacity: 0.8; }
+      to { opacity: 1; }
     }
 
     /* ---------- DESCRIPTION ---------- */
@@ -196,8 +195,7 @@
       max-width: 800px;
       margin: 0 auto 2.8rem auto;
       padding: 0 0.5rem;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.55s forwards;
+      animation: fadeUp 0.55s 0.14s both;
       line-height: 1.8;
     }
 
@@ -243,8 +241,7 @@
       border-radius: 1.25rem;
       background: #0a111c;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-      opacity: 0;
-      animation: applianceReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      animation: applianceReveal 0.5s ease-out both;
       transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
     }
 
@@ -267,29 +264,31 @@
       transition: opacity 0.45s ease;
     }
 
-    .appliance-card:hover {
-      transform: translateY(-8px) scale(1.025);
-      border-color: rgba(90, 205, 255, 0.75);
-      box-shadow: 0 20px 42px rgba(0, 140, 255, 0.22), 0 0 24px rgba(0, 195, 255, 0.16);
+    @media (hover: hover) and (pointer: fine) {
+      .appliance-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(90, 205, 255, 0.75);
+        box-shadow: 0 20px 42px rgba(0, 140, 255, 0.22), 0 0 24px rgba(0, 195, 255, 0.16);
+      }
+
+      .appliance-card:hover img {
+        transform: scale(1.1);
+        filter: saturate(1.12) brightness(1.04);
+      }
+
+      .appliance-card:hover::after {
+        opacity: 1;
+      }
     }
 
-    .appliance-card:hover img {
-      transform: scale(1.1);
-      filter: saturate(1.12) brightness(1.04);
-    }
-
-    .appliance-card:hover::after {
-      opacity: 1;
-    }
-
-    .appliance-card:nth-child(1) { animation-delay: 0.08s; }
-    .appliance-card:nth-child(2) { animation-delay: 0.2s; }
-    .appliance-card:nth-child(3) { animation-delay: 0.32s; }
-    .appliance-card:nth-child(4) { animation-delay: 0.44s; }
+    .appliance-card:nth-child(1) { animation-delay: 0.04s; }
+    .appliance-card:nth-child(2) { animation-delay: 0.08s; }
+    .appliance-card:nth-child(3) { animation-delay: 0.12s; }
+    .appliance-card:nth-child(4) { animation-delay: 0.16s; }
 
     @keyframes applianceReveal {
-      from { opacity: 0; transform: translateY(28px) scale(0.96); filter: blur(6px); }
-      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+      from { opacity: 0.75; }
+      to { opacity: 1; }
     }
 
     /* ---------- SOCIAL GRID ---------- */
@@ -299,8 +298,7 @@
       justify-content: center;
       gap: 1.5rem 2rem;
       margin: 2.5rem 0 2rem;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.8s forwards;
+      animation: fadeUp 0.55s 0.2s both;
     }
 
     .social-btn {
@@ -317,7 +315,7 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 1.1rem;
-      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
+      transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
       min-width: 170px;
       position: relative;
@@ -339,35 +337,35 @@
       transition: transform 0.7s;
     }
 
-    .social-btn:hover::before {
-      transform: translateX(120%);
-    }
+    @media (hover: hover) and (pointer: fine) {
+      .social-btn:hover::before {
+        transform: translateX(120%);
+      }
 
-    .social-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(100, 200, 255, 0.6);
-      box-shadow: 0 0 30px rgba(0, 180, 255, 0.4), 0 10px 20px -5px black;
-      transform: translateY(-6px) scale(1.02);
-    }
+      .social-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(100, 200, 255, 0.6);
+        box-shadow: 0 0 30px rgba(0, 180, 255, 0.4), 0 10px 20px -5px black;
+        transform: translateY(-3px);
+      }
 
-    .social-btn:hover i {
-      transform: scale(1.2);
-    }
+      .social-btn:hover i {
+        transform: scale(1.2);
+      }
 
-    /* Platform-specific hover accents */
-    .social-btn.instagram:hover { border-color: #e1306c; box-shadow: 0 0 30px #e1306c70; }
-    .social-btn.tiktok:hover { border-color: #00f2ea; box-shadow: 0 0 30px #00f2ea70; }
-    .social-btn.facebook:hover { border-color: #1877f2; box-shadow: 0 0 30px #1877f270; }
-    .social-btn.website:hover { border-color: #a0f0ff; box-shadow: 0 0 30px #a0f0ff70; }
-    .social-btn.whatsapp:hover { border-color: #25d366; box-shadow: 0 0 30px #25d36670; }
+      .social-btn.instagram:hover { border-color: #e1306c; box-shadow: 0 0 30px #e1306c70; }
+      .social-btn.tiktok:hover { border-color: #00f2ea; box-shadow: 0 0 30px #00f2ea70; }
+      .social-btn.facebook:hover { border-color: #1877f2; box-shadow: 0 0 30px #1877f270; }
+      .social-btn.website:hover { border-color: #a0f0ff; box-shadow: 0 0 30px #a0f0ff70; }
+      .social-btn.whatsapp:hover { border-color: #25d366; box-shadow: 0 0 30px #25d36670; }
+    }
 
     /* ---------- MAP CTA (large, prominent) ---------- */
     .map-cta {
       display: flex;
       justify-content: center;
       margin: 1.2rem 0 1.8rem;
-      opacity: 0;
-      animation: fadeUp 0.9s 1.0s forwards;
+      animation: fadeUp 0.55s 0.26s both;
     }
 
     .map-btn {
@@ -384,7 +382,7 @@
       font-weight: 600;
       font-size: 1.25rem;
       letter-spacing: 1px;
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+      transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 0 30px rgba(0, 150, 255, 0.3), 0 10px 25px -5px black;
       position: relative;
       overflow: hidden;
@@ -406,21 +404,23 @@
       transition: transform 0.8s;
     }
 
-    .map-btn:hover::before {
-      transform: translateX(120%);
-    }
+    @media (hover: hover) and (pointer: fine) {
+      .map-btn:hover::before {
+        transform: translateX(120%);
+      }
 
-    .map-btn:hover {
-      background: linear-gradient(145deg, #0d2340, #123152);
-      border-color: rgba(0, 220, 255, 0.9);
-      box-shadow: 0 0 50px rgba(0, 190, 255, 0.5), 0 15px 30px -8px black;
-      transform: translateY(-5px) scale(1.02);
-      color: #fff;
-    }
+      .map-btn:hover {
+        background: linear-gradient(145deg, #0d2340, #123152);
+        border-color: rgba(0, 220, 255, 0.9);
+        box-shadow: 0 0 50px rgba(0, 190, 255, 0.5), 0 15px 30px -8px black;
+        transform: translateY(-3px);
+        color: #fff;
+      }
 
-    .map-btn:hover i {
-      transform: scale(1.2) rotate(-5deg);
-      color: #ffffff;
+      .map-btn:hover i {
+        transform: scale(1.2) rotate(-5deg);
+        color: #ffffff;
+      }
     }
 
     /* ---------- BADGE / FOOTER ---------- */
@@ -435,8 +435,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       font-weight: 400;
-      opacity: 0;
-      animation: fadeUp 0.9s 1.2s forwards;
+      animation: fadeUp 0.55s 0.32s both;
     }
 
     .badge i {
@@ -528,14 +527,12 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .appliance-card {
-        opacity: 1;
-        animation: none;
-        transition: none;
-      }
-      .appliance-card img,
-      .appliance-card::after {
-        transition: none;
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
       }
     }
 
@@ -551,18 +548,67 @@
       border-radius: 20px;
     }
 
-    /* ---------- ADDITIONAL MICRO-ANIMATIONS ---------- */
-    .social-btn:nth-child(1) { animation: popIn 0.5s 1.3s both; }
-    .social-btn:nth-child(2) { animation: popIn 0.5s 1.45s both; }
-    .social-btn:nth-child(3) { animation: popIn 0.5s 1.6s both; }
-    .social-btn:nth-child(4) { animation: popIn 0.5s 1.75s both; }
-    .social-btn:nth-child(5) { animation: popIn 0.5s 1.9s both; }
-    .social-btn:nth-child(6) { animation: popIn 0.5s 2.05s both; }
-    .social-btn:nth-child(7) { animation: popIn 0.5s 2.2s both; }
+    .social-btn:nth-child(1) { animation: softReveal 0.45s 0.04s both; }
+    .social-btn:nth-child(2) { animation: softReveal 0.45s 0.07s both; }
+    .social-btn:nth-child(3) { animation: softReveal 0.45s 0.1s both; }
+    .social-btn:nth-child(4) { animation: softReveal 0.45s 0.13s both; }
+    .social-btn:nth-child(5) { animation: softReveal 0.45s 0.16s both; }
+    .social-btn:nth-child(6) { animation: softReveal 0.45s 0.19s both; }
+    .social-btn:nth-child(7) { animation: softReveal 0.45s 0.22s both; }
 
-    @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1); }
+    :focus-visible {
+      outline: 2px solid #71d8ff;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 800px) {
+      .glow-orb {
+        filter: blur(72px);
+      }
+
+      .orb-1 {
+        width: 360px;
+        height: 360px;
+      }
+
+      .orb-2 {
+        width: 400px;
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .glow-orb {
+        filter: blur(56px);
+      }
+
+      .orb-1 {
+        width: 260px;
+        height: 260px;
+      }
+
+      .orb-2 {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+      .card:hover,
+      .logo-wrapper img:hover,
+      .appliance-card:hover,
+      .appliance-card:hover img,
+      .social-btn:hover,
+      .social-btn:hover i,
+      .map-btn:hover,
+      .map-btn:hover i {
+        transform: none;
+      }
+
+      .social-btn::before,
+      .map-btn::before {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -655,31 +701,5 @@
     </div>
   </main>
 
-  <!-- Subtle JS for professional tilt effect -->
-  <script>
-    (function() {
-      const card = document.querySelector('.card');
-      if (!card) return;
-
-      // 3D tilt effect (professional, subtle)
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / 35;
-        const rotateY = (centerX - x) / 35;
-        card.style.transform = `perspective(1400px) rotateX(${rotateX * 0.15}deg) rotateY(${rotateY * 0.15}deg)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1400px) rotateX(0deg) rotateY(0deg)';
-      });
-
-      // Small console greeting (optional, non-intrusive)
-      console.log('%cTopLoad — جاهز للانطلاق 🚛', 'color:#00c3ff; font-size:14px; font-weight:bold;');
-    })();
-  </script>
 </body>
 </html>
