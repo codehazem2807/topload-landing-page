@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TopLoad لصيانة الغسالات فى جميع انحاءا الاسكندرية</title>
+  <!-- Font Awesome 6 (professional icon set) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts (modern) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,900&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- RESET & GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #05080f;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #fff;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ---------- ANIMATED BACKGROUND LAYERS ---------- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, #0d1b2a 0%, #03060c 75%);
+      z-index: -3;
+      animation: bgShift 16s infinite alternate ease-in-out;
+    }
+
+    @keyframes bgShift {
+      0% { opacity: 0.9; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.08); }
+    }
+
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: -2;
+      opacity: 0.5;
+      animation: orbFloat 20s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: #0066ff;
+      top: -150px;
+      left: -100px;
+      animation-duration: 18s;
+    }
+
+    .orb-2 {
+      width: 600px;
+      height: 600px;
+      background: #00c3ff;
+      bottom: -200px;
+      right: -150px;
+      animation-duration: 24s;
+      opacity: 0.3;
+    }
+
+    @keyframes orbFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(60px, -40px) scale(1.2); }
+    }
+
+    /* ---------- MAIN CARD (glassmorphism + glow) ---------- */
+    .card {
+      max-width: 1150px;
+      width: 100%;
+      background: rgba(10, 17, 28, 0.65);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 3rem;
+      padding: 3.5rem 4rem;
+      box-shadow: 
+        0 30px 60px -15px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(0, 200, 255, 0.15) inset,
+        0 0 80px -20px rgba(0, 160, 255, 0.3);
+      transition: box-shadow 0.6s, transform 0.6s;
+      animation: cardReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 3rem;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      box-shadow: 
+        0 40px 80px -15px rgba(0, 0, 0, 0.95),
+        0 0 0 2px rgba(0, 190, 255, 0.3) inset,
+        0 0 120px -20px rgba(0, 170, 255, 0.5);
+    }
+
+    @keyframes cardReveal {
+      0% { opacity: 0; transform: translateY(70px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ---------- LOGO (with professional glow) ---------- */
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .logo-wrapper img {
+      width: 190px;
+      max-width: 70%;
+      height: auto;
+      filter: drop-shadow(0 0 25px rgba(0, 190, 255, 0.7));
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1), filter 0.4s;
+      animation: logoPulse 4s infinite ease-in-out;
+    }
+
+    .logo-wrapper img:hover {
+      transform: scale(1.07);
+      filter: drop-shadow(0 0 40px rgba(0, 220, 255, 1));
+    }
+
+    @keyframes logoPulse {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* ---------- HEADLINE (gradient shine) ---------- */
+    h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+      text-align: center;
+      background: linear-gradient(120deg, #ffffff 0%, #b0d4ff 35%, #6ec8ff 60%, #ffffff 100%);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.25rem;
+      filter: drop-shadow(0 0 30px rgba(0, 170, 255, 0.4));
+      animation: shine 6s infinite linear;
+    }
+
+    @keyframes shine {
+      0% { background-position: 0% center; }
+      100% { background-position: 300% center; }
+    }
+
+    /* ---------- SUBHEAD ---------- */
+    .subhead {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #b8d0f0;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.3s forwards;
+      text-shadow: 0 0 20px rgba(0, 160, 255, 0.3);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- DESCRIPTION ---------- */
+    .desc {
+      font-size: 1.15rem;
+      text-align: center;
+      color: #c8daf5;
+      max-width: 800px;
+      margin: 0 auto 2.8rem auto;
+      padding: 0 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.55s forwards;
+      line-height: 1.8;
+    }
+
+    .desc i {
+      color: #00c3ff;
+      margin: 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .desc strong {
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---------- APPLIANCE GALLERY ---------- */
+    .appliance-section {
+      margin: 0 auto 2.5rem;
+      max-width: 1000px;
+    }
+
+    .appliance-section h2 {
+      margin-bottom: 1.2rem;
+      color: #d8eaff;
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .appliance-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .appliance-card {
+      min-width: 0;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      aspect-ratio: 4 / 3;
+      border: 1px solid rgba(130, 205, 255, 0.2);
+      border-radius: 1.25rem;
+      background: #0a111c;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      animation: applianceReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+    }
+
+    .appliance-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
+    }
+
+    .appliance-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(0, 195, 255, 0.16), transparent 45%, rgba(0, 0, 0, 0.12));
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+
+    .appliance-card:hover {
+      transform: translateY(-8px) scale(1.025);
+      border-color: rgba(90, 205, 255, 0.75);
+      box-shadow: 0 20px 42px rgba(0, 140, 255, 0.22), 0 0 24px rgba(0, 195, 255, 0.16);
+    }
+
+    .appliance-card:hover img {
+      transform: scale(1.1);
+      filter: saturate(1.12) brightness(1.04);
+    }
+
+    .appliance-card:hover::after {
+      opacity: 1;
+    }
+
+    .appliance-card:nth-child(1) { animation-delay: 0.08s; }
+    .appliance-card:nth-child(2) { animation-delay: 0.2s; }
+    .appliance-card:nth-child(3) { animation-delay: 0.32s; }
+    .appliance-card:nth-child(4) { animation-delay: 0.44s; }
+
+    @keyframes applianceReveal {
+      from { opacity: 0; transform: translateY(28px) scale(0.96); filter: blur(6px); }
+      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    /* ---------- SOCIAL GRID ---------- */
+    .social-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem 2rem;
+      margin: 2.5rem 0 2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      padding: 1rem 2.2rem;
+      border-radius: 60px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+      min-width: 170px;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+    }
+
+    .social-btn i {
+      font-size: 1.5rem;
+      transition: transform 0.35s;
+    }
+
+    .social-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transform: translateX(-120%);
+      transition: transform 0.7s;
+    }
+
+    .social-btn:hover::before {
+      transform: translateX(120%);
+    }
+
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(100, 200, 255, 0.6);
+      box-shadow: 0 0 30px rgba(0, 180, 255, 0.4), 0 10px 20px -5px black;
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .social-btn:hover i {
+      transform: scale(1.2);
+    }
+
+    /* Platform-specific hover accents */
+    .social-btn.instagram:hover { border-color: #e1306c; box-shadow: 0 0 30px #e1306c70; }
+    .social-btn.tiktok:hover { border-color: #00f2ea; box-shadow: 0 0 30px #00f2ea70; }
+    .social-btn.facebook:hover { border-color: #1877f2; box-shadow: 0 0 30px #1877f270; }
+    .social-btn.website:hover { border-color: #a0f0ff; box-shadow: 0 0 30px #a0f0ff70; }
+    .social-btn.whatsapp:hover { border-color: #25d366; box-shadow: 0 0 30px #25d36670; }
+
+    /* ---------- MAP CTA (large, prominent) ---------- */
+    .map-cta {
+      display: flex;
+      justify-content: center;
+      margin: 1.2rem 0 1.8rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.0s forwards;
+    }
+
+    .map-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: linear-gradient(145deg, #0a1a2f, #0d1f38);
+      border: 1px solid rgba(0, 200, 255, 0.4);
+      padding: 1.2rem 3rem;
+      border-radius: 70px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+      box-shadow: 0 0 30px rgba(0, 150, 255, 0.3), 0 10px 25px -5px black;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+    }
+
+    .map-btn i {
+      font-size: 1.8rem;
+      color: #4ad0ff;
+      transition: transform 0.4s;
+    }
+
+    .map-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(100, 220, 255, 0.2), transparent);
+      transform: translateX(-120%);
+      transition: transform 0.8s;
+    }
+
+    .map-btn:hover::before {
+      transform: translateX(120%);
+    }
+
+    .map-btn:hover {
+      background: linear-gradient(145deg, #0d2340, #123152);
+      border-color: rgba(0, 220, 255, 0.9);
+      box-shadow: 0 0 50px rgba(0, 190, 255, 0.5), 0 15px 30px -8px black;
+      transform: translateY(-5px) scale(1.02);
+      color: #fff;
+    }
+
+    .map-btn:hover i {
+      transform: scale(1.2) rotate(-5deg);
+      color: #ffffff;
+    }
+
+    /* ---------- BADGE / FOOTER ---------- */
+    .badge {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 1.8rem;
+      font-size: 0.95rem;
+      color: #7a96b8;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 400;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.2s forwards;
+    }
+
+    .badge i {
+      color: #00c3ff;
+      font-size: 1rem;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 800px) {
+      .card {
+        padding: 2.5rem 2rem;
+        border-radius: 2.5rem;
+      }
+      .appliance-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      h1 {
+        font-size: 3.2rem;
+      }
+      .subhead {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+      }
+      .desc {
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+      .social-btn {
+        padding: 0.9rem 1.6rem;
+        font-size: 1rem;
+        min-width: 150px;
+      }
+      .map-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        gap: 14px;
+      }
+      .map-btn i {
+        font-size: 1.5rem;
+      }
+      .logo-wrapper img {
+        width: 150px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      .card {
+        padding: 2rem 1.25rem;
+        border-radius: 2rem;
+      }
+      h1 {
+        font-size: 2.6rem;
+      }
+      .subhead {
+        font-size: 1rem;
+      }
+      .desc {
+        font-size: 0.95rem;
+      }
+      .appliance-grid {
+        gap: 0.8rem;
+      }
+      .appliance-card {
+        border-radius: 1rem;
+      }
+      .social-grid {
+        gap: 1rem;
+      }
+      .social-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.95rem;
+        min-width: unset;
+      }
+      .map-btn {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .map-btn i {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .appliance-card {
+        opacity: 1;
+        animation: none;
+        transition: none;
+      }
+      .appliance-card img,
+      .appliance-card::after {
+        transition: none;
+      }
+    }
+
+    /* ---------- SCROLLBAR (optional) ---------- */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #03060c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e90ff;
+      border-radius: 20px;
+    }
+
+    /* ---------- ADDITIONAL MICRO-ANIMATIONS ---------- */
+    .social-btn:nth-child(1) { animation: popIn 0.5s 1.3s both; }
+    .social-btn:nth-child(2) { animation: popIn 0.5s 1.45s both; }
+    .social-btn:nth-child(3) { animation: popIn 0.5s 1.6s both; }
+    .social-btn:nth-child(4) { animation: popIn 0.5s 1.75s both; }
+    .social-btn:nth-child(5) { animation: popIn 0.5s 1.9s both; }
+    .social-btn:nth-child(6) { animation: popIn 0.5s 2.05s both; }
+    .social-btn:nth-child(7) { animation: popIn 0.5s 2.2s both; }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background glow orbs -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <!-- Main card -->
+  <main class="card">
+    <!-- LOGO (same path: logo.png) -->
+    <div class="logo-wrapper">
+      <img src="logo.png" alt="TopLoad logo" onerror="this.style.display='none'">
+    </div>
+
+    <!-- MAIN TITLE -->
+    <h1>TopLoad</h1>
+    <div class="subhead"><strong><h3>خبراء صيانة الغسالات فى الاسكندرية</h1></strong></div>
+
+    <!-- DESCRIPTION -->
+    <div class="desc">
+      <i class="fas fa-bolt"></i> 
+      <strong>صيانة بلا حدود</strong><i class="fas fa-bolt"></i>
+      </i>
+      <br><span style="font-size:0.95rem; color:#9bb5d9; display:inline-block; margin-top:8px;"><strong>اطول فترة ضمان فى مصر </strong></span>
+    </div>
+    <section class="appliance-section" aria-label="صور الأجهزة المنزلية">
+      <div class="appliance-grid">
+        <figure class="appliance-card">
+          <img src="1.jfif" alt="غسالة ملابس أوتوماتيك في غرفة غسيل عصرية" loading="lazy" decoding="async">
+        </figure>
+        <figure class="appliance-card">
+          <img src="2.jfif" alt="غسالة ملابس بتصميم حديث" loading="lazy" decoding="async">
+        </figure>
+        <figure class="appliance-card">
+          <img src="3.jfif" alt="غسالة أطباق مدمجة في مطبخ حديث" loading="lazy" decoding="async">
+        </figure>
+        <figure class="appliance-card">
+          <img src="4.jfif" alt="مجفف ملابس في غرفة غسيل عصرية" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+    <!-- SOCIAL LINKS -->
+    <div class="social-grid">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/tobload?stkn=Nm03Njd3bTd0ZzBv" target="_blank" rel="noopener" class="social-btn instagram">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@tooplood1?_r=1&_t=ZS-9AKRJhnnaKt" target="_blank" rel="noopener" class="social-btn tiktok">
+        <i class="fab fa-tiktok"></i> TikTok
+      </a>
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/share/1AHUJbKpaU/" target="_blank" rel="noopener" class="social-btn facebook">
+        <i class="fab fa-facebook-f"></i> Facebook
+      </a>
+      <!-- Website / Vercel -->
+      <a href="https://toploadalex.vercel.app" target="_blank" rel="noopener" class="social-btn website">
+        <i class="fab fa-internet-explorer"></i> Website
+      </a>
+      <a href="https://6a1ada8e6859a.site123.me/" target="_blank" rel="noopener" class="social-btn website">
+        <i class="fab "></i> اعرف مين توب لوود
+        </a>
+      <!-- WhatsApp contacts -->
+      <a href="https://wa.me/201021508336" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp" aria-label="مراسلة توب لود عبر واتساب">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> 01021508336
+      </a>
+      <a href="https://wa.me/201228876359" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp" aria-label="مراسلة تووب لوود عبر واتساب">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> 01228876359
+      </a>
+    </div>
+
+    <!-- ===== GOOGLE MAPS CTA (14 شارع كنيسة الأورام، جناكليس، الإسكندرية) ===== -->
+    <div class="map-cta">
+      <a 
+        href="https://maps.app.goo.gl/7uu1DGhbPKkoEr1u6" 
+        target="_blank" 
+        rel="noopener" 
+        class="map-btn"
+      >
+        <i class="fas fa-map-pin"></i> 
+       <span>شارع المقدم كمال مرسى - جناكليس - الاسكندرية</span><span>3</span>
+        <i class="fas fa-arrow-right" style="font-size:1.2rem;"></i>
+      </a>
+    </div>
+
+    <!-- BADGE / FOOTER NOTE -->
+    <div class="badge">
+      <i class="fas fa-crown"></i> TOPLOAD ALEX <i class="fas fa-crown"></i>
+    </div>
+  </main>
+
+  <!-- Subtle JS for professional tilt effect -->
+  <script>
+    (function() {
+      const card = document.querySelector('.card');
+      if (!card) return;
+
+      // 3D tilt effect (professional, subtle)
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 35;
+        const rotateY = (centerX - x) / 35;
+        card.style.transform = `perspective(1400px) rotateX(${rotateX * 0.15}deg) rotateY(${rotateY * 0.15}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1400px) rotateX(0deg) rotateY(0deg)';
+      });
+
+      // Small console greeting (optional, non-intrusive)
+      console.log('%cTopLoad — جاهز للانطلاق 🚛', 'color:#00c3ff; font-size:14px; font-weight:bold;');
+    })();
+  </script>
+</body>
+</html>
